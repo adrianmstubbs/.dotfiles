@@ -183,6 +183,7 @@ static void maprequest(XEvent *e);
 static void monocle(Monitor *m);
 static void motionnotify(XEvent *e);
 static void movemouse(const Arg *arg);
+static void moveresize(const Arg *arg);
 static Client *nexttiled(Client *c);
 static void pop(Client *);
 static void propertynotify(XEvent *e);
@@ -270,6 +271,24 @@ static Window root, wmcheckwin;
 
 /* configuration, allows nested code to access above variables */
 #include "config.h"
+
+static void
+moveresize(const Arg *arg)
+{
+	XEvent ev;
+	Monitor *m = selmon;
+	
+	if(!(m->sel && arg && arg->v))
+		return;
+	if(m->lt[m->sellt]->arrange && !m->sel->isfloating)
+		togglefloating(NULL);
+return;
+	
+	resize(m->sel, m->sel->x + ((int *)arg->v)[0],
+m->sel->y + ((int)arg->v)[1], m->sel->w + ((int)arg->v)[2], m->sel->h + ((int *)arg->v)[3], True);
+	
+	while(XCheckMaskEvent(dpy, EnterWindowMask, &ev));
+}
 
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
