@@ -98,6 +98,14 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	/* KeyBindings Move and Resize Window */
+	{ MODKEY, 			XK_Down,   moveresize,   {.V = (int []){ 0, 25, 0, 0 }}},
+	{ MODKEY, 			XK_Up, 	   moveresize,   {.V = (int []){ 0, -25, 0, 0}}},
+	{ MODKEY, 		        XK_Right,  moveresize,   {.V = (int []){25, 0, 0, 0 }}},
+	{ MODKEY, 			XK_Left,   moveresize,   {.V = (int []){-25, 0, 0, 0, }}},
+	{ MODKEY|ShiftMask, 	XK_down, 	moveresize, 	{.V = (int []){ 0, 0, 0, 25 }}},
+	{ MODKEY|ShiftMask,     XK_Up, 		moveresize,     {.V = (int []){ 0, 0, 0, -25 }}},
+	{ MODKEY|ShiftMask,     XK_Right,       moveresize, 	{.V = (int []){ 0, 0, -25, 0 }}},
 };
 
 /* button definitions */
