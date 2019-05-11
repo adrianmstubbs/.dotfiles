@@ -23,7 +23,7 @@ let s:palette.grey006 = [249, '#b2b2b2']
 let s:palette.grey007 = [248, '#a8a8a8']
 
 
-let s:palette.black    = [233, '#000000']
+let s:palette.black000 = [233, '#000000']
 let s:palette.black001 = [232, '#080808']
 let s:palette.black002 = [233, '#121212']
 let s:palette.black003 = [234, '#lclclc']
@@ -33,25 +33,24 @@ let s:palette.black004 = [235, '#262626']
 let s:palette.pink000 = [175, '#d787af']
 let s:palette.pink001 = [174, '#d78787']
 let s:palette.pink002 = [181, '#d7afaf']
-let s:palette.vermillion = [167, '#d75f5']
+let s:palette.pink003 = [167, '#ff8787']
 
 if has("nvim") && (has("gui_running") || &termguicolors)
-    let g:terminal_color_0 = s:palette.gray01[1]
-    let g:terminal_color_1 = s:palette.gray06[1]
-    let g:terminal_color_2 = s:palette.gray03[1]
-    let g:terminal_color_3 = s:palette.gray11[1]
-    let g:terminal_color_4 = s:palette.gray02[1]
-    let g:terminal_color_5 = s:palette.gray08[1]
-    let g:terminal_color_6 = s:palette.gray09[1]
-    let g:terminal_color_7 = s:palette.gray13[1]
-    let g:terminal_color_8 = s:palette.gray03[1]
-    let g:terminal_color_9 = s:palette.gray10[1]
-    let g:terminal_color_10 = s:palette.gray07[1]
-    let g:terminal_color_11 = s:palette.gray13[1]
-    let g:terminal_color_12 = s:palette.gray05[1]
-    let g:terminal_color_13 = s:palette.gray12[1]
-    let g:terminal_color_14 = s:palette.gray14[1]
-    let g:terminal_color_15 = s:palette.white[1]
+    let g:terminal_color_0 = s:palette.black000[1]
+    let g:terminal_color_1 = s:palette.black001[1]
+    let g:terminal_color_2 = s:palette.black002[1]
+    let g:terminal_color_3 = s:palette.black003[1]
+    let g:terminal_color_4 = s:palette.black004[1]
+    let g:terminal_color_5 = s:palette.white[1]
+    let g:terminal_color_6 = s:palette.white000[1]
+    let g:terminal_color_15 = s:palette.grey000[1]
+    let g:terminal_color_16 = s:palette.grey001[1]
+    let g:terminal_color_17 = s:palette.grey002[1]
+    let g:terminal_color_18 = s:palette.grey003[1]
+    let g:terminal_color_19 = s:palette.grey004[1]
+    let g:terminal_color_20 = s:palette.grey005[1]
+    let g:terminal_color_21 = s:palette.grey006[1]
+                                                                                         30,1          Top
 endif
 
 function! s:hi(group, fg_color, bg_color, style)
@@ -75,26 +74,26 @@ call s:hi('Constant', s:palette.pink000, s:palette.black001, 'none')
 call s:hi('String', s:palette.pink000, s:palette.black001, '')
 call s:hi('Number', s:palette.pink000, s:palette.black001, '')
 
-call s:hi('Identifier', s:palette.white, s:palette.black002, 'none')
-call s:hi('Function', s:palette.white, s:palette.black002, '')
+call s:hi('Identifier', s:palette.white, s:palette.black001, 'none')
+call s:hi('Function', s:palette.pink003, s:palette.black001, '')
 
-call s:hi('Statement', s:palette.white, s:palette.black003, 'none')
-call s:hi('Operator', s:palette.white, s:palette.black001, 'none')
-call s:hi('Keyword', s:palette.white, s:palette.black003, '')
+call s:hi('Statement', s:palette.pink003, s:palette.black000, 'none')
+call s:hi('Operator', s:palette.pink003, s:palette.black001, 'none')
+call s:hi('Keyword', s:palette.pink003, s:palette.black001, '')
 
-call s:hi('PreProc', s:palette.white, s:palette.black004, 'none')
+call s:hi('PreProc', s:palette.white, s:palette.black001, 'none')
 
-call s:hi('Type', s:palette.pink001, s:palette.black004, 'none')
+call s:hi('Type', s:palette.pink001, s:palette.black001, 'none')
 
 call s:hi('Special', s:palette.pink002, s:palette.black001, '')
 call s:hi('SpecialComment', s:palette.pink002, s:palette.black001, 'none')
 
-call s:hi('Title', s:palette.white, s:palette.black002, 'none')
-call s:hi('Todo', s:palette.pink002, s:palette.black002, '')
+call s:hi('Title', s:palette.white, s:palette.black001, 'none')
+call s:hi('Todo', s:palette.pink002, s:palette.black001, '')
 if has("nvim") || has("gui_running")
-        call s:hi('Comment', s:palette.white, s:palette.black003, 'italic')
+        call s:hi('Comment', s:palette.white, s:palette.black001, 'italic')
 else
-        call s:hi('Comment', s:palette.white, s:palette.black003, '')
+        call s:hi('Comment', s:palette.white, s:palette.black001, '')
 endif
 
 call s:hi('LineNr', s:palette.white, s:palette.black004, 'none')
@@ -104,6 +103,7 @@ call s:hi('CursorLineNr', s:palette.white, s:palette.black004, 'none')
 
 call s:hi('Visual', s:palette.white, s:palette.black001, '')
 call s:hi('Search', s:palette.white, s:palette.black001, 'none')
+
 call s:hi('IncSearch', s:palette.white, s:palette.black001, 'none')
 
 call s:hi('SpellBad', s:palette.pink002, s:palette.black002, 'undercurl')
@@ -111,11 +111,11 @@ call s:hi('SpellCap', s:palette.pink002, s:palette.black002, 'undercurl')
 call s:hi('SpellLocal', s:palette.pink002, s:palette.black002, 'undercurl')
 call s:hi('SpellRare', s:palette.pink002, s:palette.black002, 'undercurl')
 
-call s:hi('Error', s:palette.pink000, s:palette.black001, 'none')
-call s:hi('ErrorMsg', s:palette.pink000, s:palette.black001, '')
-call s:hi('WarningMsg', s:palette.pink000, s:palette.black001, '')
-call s:hi('ModeMsg', s:palette.pink000, s:palette.black001, '')
-call s:hi('MoreMsg', s:palette.pink000, s:palette.black001, '')
+call s:hi('Error', s:palette.pink000, s:palette.black003, 'none')
+call s:hi('ErrorMsg', s:palette.pink000, s:palette.black003, '')
+call s:hi('WarningMsg', s:palette.pink000, s:palette.black003, '')
+call s:hi('ModeMsg', s:palette.pink000, s:palette.black003, '')
+call s:hi('MoreMsg', s:palette.pink000, s:palette.black003, '')
 
 call s:hi('MatchParen', s:palette.white, s:palette.black002, '')
 
@@ -153,13 +153,15 @@ highlight! link ColorColumn FoldColumn
 highlight! link CursorColumn CursorLine
 
 highlight! link Folded LineNr
+
 highlight! link Conceal Normal
 highlight! link ErrorMsg Error
 
 highlight! link Conditional Statement
 highlight! link Repeat Statement
 highlight! link Label Statement
-                                                                                                                                                                                110,1         83%
+highlight! link Exception Statement
+
 highlight! link Include PreProc
 highlight! link Define PreProc
 highlight! link Macro PreProc
@@ -179,6 +181,5 @@ highlight! link VisualNOS Visual
 highlight! link TabLine StatusLineNC
 highlight! link TabLineFill StatusLineNC
 highlight! link TabLineSel StatusLine
+~
 
-
-                                                                                                                                                                                
