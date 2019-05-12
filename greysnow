@@ -48,7 +48,7 @@ class candycane(ColorScheme):
             if context.socket:
                 fg = white
                 bg = black
-                attr |= bold
+                attr |= reverse
             if context.fifo or context.device:
                 fg = white
                 bg = black
@@ -61,7 +61,7 @@ class candycane(ColorScheme):
                 fg = white
                 bg = red
             if context.tag_marker and not context.selected:
-                attr |= bold
+                attr |= reverse
                 if fg in (7, 8):
                     fg = 1
                 else:
@@ -71,15 +71,13 @@ class candycane(ColorScheme):
                 bg = 8
             if context.main_column:
                 if context.selected:
-                    attr |= normal
                 if context.marked:
-                    attr |= normal
-                    fg = 8
+                    fg = cyan
                 if context.badinfo:
                     if attr & reverse:
-                        bg =1
+                        bg = red
                     else:
-                        fg = 7
+                        fg = white
         elif context.in_titlebar:
             attr |= normal
             if context.hostname:
